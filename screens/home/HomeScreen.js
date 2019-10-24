@@ -9,10 +9,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import container from './container';
+import { MonoText } from '../../components/StyledText';
 
-import { MonoText } from '../components/StyledText';
-
-export default function HomeScreen() {
+const HomeScreen = (props) => {
   return (
     <View style={styles.container}>
       <ScrollView
@@ -22,8 +22,8 @@ export default function HomeScreen() {
           <Image
             source={
               __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
+                ? require('../../assets/images/robot-dev.png')
+                : require('../../assets/images/robot-prod.png')
             }
             style={styles.welcomeImage}
           />
@@ -196,3 +196,5 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+
+export default container(HomeScreen)
