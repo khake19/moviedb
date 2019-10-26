@@ -1,5 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState } from 'react';
+import container from './container';
 import {
   Button,
   ScrollView,
@@ -11,19 +12,31 @@ import {
 } from 'react-native';
 
 const LoginScreen = (props) => {
-  const [value, onChangeText] = useState('');
-  console.log(value)
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = () => {
+    props.auth.login({username, password})
+  }
   return(
     <View style={styles.container}>
       <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
         <View style={styles.welcomeContainer}>
           <TextInput
             style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
-            onChangeText={text => onChangeText(text)}
-            value={value}
+            onChangeText={text => setUsername(text)}
+            value={username}
           />
-          <TextInput style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1 }} />
-          <Button title="Sign In" />
+          <TextInput
+            style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, marginBottom: 10 }}
+            onChangeText={text => setPassword(text)}
+            secureTextEntry={true}
+            value={password}
+          />
+          <Button
+          title="Sign In"
+          onPress={handleSubmit}
+          />
         </View>
       </ScrollView>
     </View>
@@ -119,4 +132,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default container(LoginScreen);

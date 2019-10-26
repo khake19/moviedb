@@ -3,14 +3,17 @@ import { handleActions } from 'redux-actions';
 import types from './types';
 
 const initialState = {
-    movies: {
-      result: []
+    login: {
+      loading: false,
+      error: false,
+      success: false,
+      isLoggedIn: false
     }
 };
 
 export default handleActions(
   {
-    [types.GET_MOVIES]: state => ({ ...state, loading: true, fetched: false }),
+    [types.LOGIN]: state => ({ ...state, loading: true, error: false }),
   },
   initialState
 );

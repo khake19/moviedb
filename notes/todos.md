@@ -3,8 +3,8 @@
 - ~~Set Up Environment~~
 - ~~Set Up Redux~~
 - ~~Design Duck Architecture~~
-- Add Login Page
-  - 
+- ~~Add Login Page~~
+- ~~Completion of API through Postman~~
 - Authentication
 - Navigation
 - Display Movie List
@@ -21,3 +21,83 @@
 Reminder:
 * Download X-code on Mac
 * No interruptions on weekend
+
+
+request token expired
+need session token for rating a movie
+
+the reason our login require request token so we can authenticate it to create session id
+
+
+Article:
+
+handling api:
+https://medium.com/better-programming/handling-api-like-a-boss-in-react-native-364abd92dc3d
+
+config environments:
+https://dev.to/calintamas/how-to-manage-staging-and-production-environments-in-a-react-native-app-4naa
+
+persist store:
+https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48b
+
+##request token expired or invalid
+
+`{
+    "status_code": 33,
+    "status_message": "Invalid request token: The request token is either expired or invalid."
+}`
+
+##request token validated successfully
+`{
+    "success": true,
+    "expires_at": "2019-10-26 07:45:49 UTC",
+    "request_token": "5d472f0dda67589752285fe5c251a6a26a8c512a"
+}`
+
+##session denied response:
+
+`{
+    "failure": true,
+    "status_code": 17,
+    "status_message": "Session denied."
+}`
+
+##session success
+`{
+    "success": true,
+    "session_id": "df0d744c135fe156b9f4994ef128d8fd931549af"
+}`
+
+
+##get account successfully
+`{
+    "avatar": {
+        "gravatar": {
+            "hash": "ac6db47007d7d67eb86a8e53ebeb5517"
+        }
+    },
+    "id": 8763122,
+    "iso_639_1": "en",
+    "iso_3166_1": "US",
+    "name": "",
+    "include_adult": false,
+    "username": "krk"
+}`
+##get account wrong api key
+`{
+    "status_code": 7,
+    "status_message": "Invalid API key: You must be granted a valid key.",
+    "success": false
+}`
+
+##get account wrong session id
+`{
+    "status_code": 3,
+    "status_message": "Authentication failed: You do not have permissions to access the service."
+}`
+
+## need to add to localstorage
+- sesion id
+- account id
+- username
+- avatar

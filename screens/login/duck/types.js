@@ -1,5 +1,5 @@
-const GET_MOVIES = 'screens/home/GET_MOVIES';
+const LOGIN = 'screens/auth/LOGIN';
 
 export default {
-  GET_MOVIES
+  LOGIN
 };
