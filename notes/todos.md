@@ -39,6 +39,20 @@ https://dev.to/calintamas/how-to-manage-staging-and-production-environments-in-a
 
 persist store:
 https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48b
+https://github.com/react-native-community/async-storage
+
+eject from expo to expokit:
+https://docs.expo.io/versions/latest/expokit/expokit/
+https://freakycoder.com/react-native-notes-1-eject-expo-with-expokit-fe1181a55f60
+
+how to run xcode project:
+https://www.dummies.com/web-design-development/mobile-apps/build-and-run-your-xcode-application/
+
+install async-storage natively:
+https://github.com/react-native-community/async-storage
+
+gitignore file:
+https://github.com/facebook/react-native/blob/master/.gitignore
 
 ##request token expired or invalid
 
@@ -101,3 +115,7 @@ https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48
 - account id
 - username
 - avatar
+
+
+Investigate why redux reset store
+- remove all persist redux
