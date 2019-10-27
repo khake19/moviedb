@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
-import { homeOperations } from './duck';
+import { authOperations } from './duck';
 import { bindActionCreators } from 'redux';
 
-const mapStateToProps = state => ({
-  auth: state.auth.login
-});
+const mapStateToProps = state => {
+  return {
+    session: state.auth.session,
+    loading: state.auth.loading,
+    error: state.auth.error
+}};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    auth: bindActionCreators(homeOperations, dispatch)
+    auth: bindActionCreators(authOperations, dispatch)
   }
 };
 

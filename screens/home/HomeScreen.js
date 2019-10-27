@@ -8,11 +8,17 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
 import container from './container';
 import { MonoText } from '../../components/StyledText';
+import { withAuth } from '../../hoc';
 
 const HomeScreen = (props) => {
+
+  const handleLogout = () => {
+    props.home.logout()
+  }
   return (
     <View style={styles.container}>
       <ScrollView
@@ -57,7 +63,10 @@ const HomeScreen = (props) => {
         <Text style={styles.tabBarInfoText}>
           This is a tab bar. You can edit it in:
         </Text>
-
+        <Button
+        title="Logout"
+        onPress={handleLogout}
+        />
         <View
           style={[styles.codeHighlightContainer, styles.navigationFilename]}>
           <MonoText style={styles.codeHighlightText}>
@@ -197,4 +206,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default container(HomeScreen)
+export default container(withAuth(HomeScreen));
