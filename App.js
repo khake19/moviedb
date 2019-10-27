@@ -5,8 +5,9 @@ import React, { useState } from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Provider } from 'react-redux';
-import store from './store/store';
-import { createRootNavigator } from "./routes";
+import { store, persistor} from './store/store';
+import Layout  from "./routes";
+import { PersistGate } from 'redux-persist/integration/react';
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -20,12 +21,13 @@ export default function App(props) {
       />
     );
   } else {
-    const Layout =  createRootNavigator()
     return (
       <View style={styles.container}>
         {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
         <Provider store={store}>
-        <Layout />
+          <PersistGate loading={null} persistor={persistor}>
+            <Layout />
+          </PersistGate>
         </Provider>
       </View>
     );
