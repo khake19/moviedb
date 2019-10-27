@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, { useState } from 'react';
 import container from './container';
+import { withAuth } from '../../hoc';
 import {
   Button,
   ScrollView,
@@ -132,4 +133,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default container(LoginScreen);
+export default container(withAuth(LoginScreen));
