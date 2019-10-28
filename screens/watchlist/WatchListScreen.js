@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { ListItem } from 'react-native-elements';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 
 export default (props) => {
@@ -12,7 +13,19 @@ export default (props) => {
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}>
-
+      <View>
+      {
+        props.watchlists.map((watchlist) => (
+          <ListItem
+            key={watchlist.movieId}
+            leftAvatar={{ source: { uri: watchlist.poster } }}
+            title={watchlist.title}
+            subtitle={watchlist.title}
+            bottomDivider
+          />
+        ))
+      }
+    </View>
     <Text>Watchlist</Text>
   </ScrollView>
 </View>)
