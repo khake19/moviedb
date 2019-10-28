@@ -54,6 +54,8 @@ https://github.com/react-native-community/async-storage
 gitignore file:
 https://github.com/facebook/react-native/blob/master/.gitignore
 
+https://image.tmdb.org/t/p/original/
+https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
 ##request token expired or invalid
 
 `{
