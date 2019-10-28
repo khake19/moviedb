@@ -16,10 +16,12 @@ import { FlatGrid } from 'react-native-super-grid';
 import { SearchBar } from 'react-native-elements';
 
 const HomeScreen = (props) => {
+  const [movies, setMovies] = useState(props.movies)
 
   useEffect(() => {
-    props.home.getMovies()
-  }, [])
+    props.home.getMovies();
+    setMovies(props.movies);
+  }, movies)
 
   const [search, setSearch] = useState('')
   const handleLogout = () => { props.home.logout() }

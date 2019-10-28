@@ -8,7 +8,7 @@ const { getWatchListSelector } = watchListSelectors;
 const mapStateToProps = state => {
   return {
     session: state.auth.session,
-    watchlists: getWatchListSelector(state),
+    watchlists: getWatchListSelector(state.watchlist.watchlists),
     loading: state.watchlist.loading,
     error: state.watchlist.error
 }};

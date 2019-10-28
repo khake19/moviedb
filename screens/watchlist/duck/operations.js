@@ -10,11 +10,12 @@ const getWatchList = options => async dispatch => {
       const { sessionId, accountId } = options;
 
       dispatch(actions.getWatchList());
-      const requestWatchList = await fetch(url + '/account/'+ accountId +'/watchlist/movies?api_key='+ apiKey +'&language=en-US&sort_by=created_at.asc&page=1&session_id=' + sessionId);
+      const request = await fetch(url + '/account/'+ accountId +'/watchlist/movies?api_key='+ apiKey +'&language=en-US&sort_by=created_at.asc&page=1&session_id=' + sessionId);
 
-      const watchList = await requestWatchList.json();
-      if ('status_code' in watchList) throw watchlist.status_message;
-      dispatch(actions.getWatchListSuccess(watchlist));
+      const response = await request.json();
+
+      if ('status_code' in response) throw response.status_message;
+      dispatch(actions.getWatchListSuccess(response));
     }
     catch(error) {
       dispatch(actions.getWatchListFailure({error: error}));

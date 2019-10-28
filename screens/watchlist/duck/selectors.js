@@ -1,5 +1,5 @@
-const getWatchListSelector = (state) => {
-  const watchlists = state.home.watchlists.results.reduce((accumulator, watchlist) => {
+const getWatchListSelector = (data) => {
+  const watchlists = data.results.reduce((accumulator, watchlist) => {
       accumulator.push({
         movieId: watchlist.id,
         title: watchlist.original_title,
@@ -11,4 +11,4 @@ const getWatchListSelector = (state) => {
   return watchlists
 }
 
-export default { getMoviesSelector }
+export default { getWatchListSelector }
