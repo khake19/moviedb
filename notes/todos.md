@@ -6,23 +6,23 @@
 - ~~Add Login Page~~
 - ~~Completion of API through Postman~~
 - ~~Eject Expo~~
-- Authentication
-- Navigation
-- Display Movie List
-- Add Search
+- ~~Authentication~~
+- ~~Navigation~~
+- ~~Display Movie List~~
+- ~~Add Search~~
 - Show Movie Details
 - Show Movie Review
 - Show Rating
 - Post Rating
 - Delete Rating
 - Add to Watchlist
-- Listing of movies in watchlist
+- ~~Listing of movies in watchlist~~
 
 
 ##Reminder:
   - Download X-code on Mac
 
-## Need To Do:
+## Need To Thinker: (still dabatable)
   - move ducks files to /modules file with same level with screens folder
   - ducks files should be independent to screens component since we can use same ducks files to different screens component. ex (movies, movie details)
   - home ducks folder should be replace to movies.
