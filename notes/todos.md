@@ -6,8 +6,6 @@
 - ~~Add Login Page~~
 - ~~Completion of API through Postman~~
 - ~~Eject Expo~~
-  - Need to use native package like asyncStorage and expo doesnt support it
-  - expokit
 - Authentication
 - Navigation
 - Display Movie List
@@ -21,16 +19,32 @@
 - Listing of movies in watchlist
 
 
-Reminder:
-* Download X-code on Mac
-* No interruptions on weekend
+##Reminder:
+  - Download X-code on Mac
+
+## Need To Do:
+  - move ducks files to /modules file with same level with screens folder
+  - ducks files should be independent to screens component since we can use same ducks files to different screens component. ex (movies, movie details)
+  - home ducks folder should be replace to movies.
 
 
-request token expired
-need session token for rating a movie
+## Planning
 
-the reason our login require request token so we can authenticate it to create session id
+### Redux Structure
+  - Read more article on how ducks architecture works
 
+### Redux Persist
+  - Used this to store our sessions
+  - Identify reducers on what to whitelist or blacklist
+
+### Authentication  
+  - aquire api key in themoviedb website
+  - use api key to request for request key
+  - login using username and password to validate our request key
+  - using validated key, now we can request session id to be used as authorisation
+
+### Navigation
+  - use hoc hooks to authenticate all screens
 
 Article:
 
@@ -63,6 +77,8 @@ https://github.com/facebook/react-native/blob/master/.gitignore
 use this link to display poster path:
 https://image.tmdb.org/t/p/original/
 https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
+
+themoviedb api return value:
 ##request token expired or invalid
 
 `{
@@ -106,6 +122,7 @@ https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
     "include_adult": false,
     "username": "krk"
 }`
+
 ##get account wrong api key
 `{
     "status_code": 7,
