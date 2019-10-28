@@ -1,34 +1,26 @@
 import actions from './actions';
 
-const getMovies = options => async dispatch => {
+const getWatchList = options => async dispatch => {
     try {
-      dispatch(actions.getMovies(options));
-      const request_movies = await fetch('https://api.themoviedb.org/3/trending/all/week?api_key=f7f6f9484a1e7c9382424a4c95fb2946')
 
-      const movies = await request_movies.json()
-      if ('status_code' in movies) throw movies.status_message
-      dispatch(actions.getMoviesSuccess(movies));
+      //need a environment to add settings
+      const apiKey = 'f7f6f9484a1e7c9382424a4c95fb2946';
+      const url = 'https://api.themoviedb.org/3';
+
+      const { sessionId, accountId } = options;
+
+      dispatch(actions.getWatchList());
+      const requestWatchList = await fetch(url + '/account/'+ accountId +'/watchlist/movies?api_key='+ apiKey +'&language=en-US&sort_by=created_at.asc&page=1&session_id=' + sessionId);
+
+      const watchList = await requestWatchList.json();
+      if ('status_code' in watchList) throw watchlist.status_message;
+      dispatch(actions.getWatchListSuccess(watchlist));
     }
     catch(error) {
-      dispatch(actions.getMoviesFailure({error: error}));
+      dispatch(actions.getWatchListFailure({error: error}));
     }
 }
 
-const searchMovies = text => async dispatch => {
-  try {
-    dispatch(actions.searchMovies());
-    const search_movies = await fetch('https://api.themoviedb.org/3/search/movie?api_key=f7f6f9484a1e7c9382424a4c95fb2946&query=' + text)
-
-    const movies = await search_movies.json()
-    if('errors' in movies) throw movies[0]
-
-    dispatch(actions.searchMoviesSuccess(movies));
-  }
-  catch(error) {
-    dispatch(actions.searchMoviesFailure({error: error}));
-  }
-}
 export default {
-  getMovies,
-  searchMovies
+  getWatchList
 };

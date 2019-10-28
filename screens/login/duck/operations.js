@@ -1,10 +1,15 @@
 import actions from './actions';
 
 const login = payload => async dispatch => {
-  
+
   try {
+
+    //need an environment to add settings
+    const url = 'https://api.themoviedb.org/3';
+    const apiKey = 'f7f6f9484a1e7c9382424a4c95fb2946';
+
     dispatch(actions.loginStarted());
-    const request_token = await fetch('https://api.themoviedb.org/3/authentication/token/new?api_key=f7f6f9484a1e7c9382424a4c95fb2946')
+    const request_token = await fetch(url + '/authentication/token/new?api_key=' + apiKey)
 
     //generate request token
     const token = await request_token.json()
@@ -13,7 +18,7 @@ const login = payload => async dispatch => {
     //allow request token to create session id using username and password
     const data = {...payload, request_token: token.request_token}
 
-    const validate_with_login = await fetch('https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=f7f6f9484a1e7c9382424a4c95fb2946', {
+    const validate_with_login = await fetch(url + '/authentication/token/validate_with_login?api_key=' + apiKey, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -26,7 +31,7 @@ const login = payload => async dispatch => {
     //create session id
     if ('status_code' in login) throw login.status_message
 
-    const request_session = await fetch('https://api.themoviedb.org/3/authentication/session/new?api_key=f7f6f9484a1e7c9382424a4c95fb2946', {
+    const request_session = await fetch(url + '/authentication/session/new?api_key=' + apiKey, {
       method: 'POST',
       body: JSON.stringify({request_token: login.request_token}),
       headers: {
@@ -38,7 +43,7 @@ const login = payload => async dispatch => {
     if ('status_code' in session) throw session.status_message
 
     //save account to database
-    const getAccount = await fetch('https://api.themoviedb.org/3/account?api_key=f7f6f9484a1e7c9382424a4c95fb2946&session_id=' + session.session_id)
+    const getAccount = await fetch(url + '/account?api_key='+ apiKey +'&session_id=' + session.session_id)
     const account = await getAccount.json()
     if ('status_code' in account) throw account.status_message
 
