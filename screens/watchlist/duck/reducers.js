@@ -3,7 +3,7 @@ import { handleActions } from 'redux-actions';
 import types from './types';
 
 const initialState = {
-    movies: {
+    watchlists: {
       results: []
     },
     loading: false,
@@ -12,28 +12,16 @@ const initialState = {
 
 export default handleActions(
   {
-    [types.GET_MOVIES_STARTED]: (state) => {
-      console.log(types.GET_MOVIES_STARTED)
+    [types.GET_WATCHLIST_STARTED]: (state) => {
+      console.log(types.GET_WATCHLIST_STARTED)
       return {...state, loading: true, error:null}
     },
-    [types.GET_MOVIES_SUCCESS]: (state, action) => {
-      console.log(types.GET_MOVIES_SUCCESS)
-      return {...state, movies: action.payload, error: null, loading: false}
+    [types.GET_WATCHLIST_SUCCESS]: (state, action) => {
+      console.log(types.GET_WATCHLIST_SUCCESS)
+      return {...state, watchlists: action.payload, error: null, loading: false}
     },
-    [types.GET_MOVIES_FAILURE]: (state, action) => {
-      console.log(types.GET_MOVIES_FAILURE)
-      return {...state, loading: false, error: action.payload.error}
-    },
-    [types.SEARCH_MOVIES_STARTED]: (state) => {
-      console.log(types.SEARCH_MOVIES_STARTED)
-      return {...state, loading: true, error:null}
-    },
-    [types.SEARCH_MOVIES_SUCCESS]: (state, action) => {
-      console.log(types.SEARCH_MOVIES_SUCCESS)
-      return {...state, movies: action.payload, error: null, loading: false}
-    },
-    [types.SEARCH_MOVIES_FAILURE]: (state, action) => {
-      console.log(types.SEARCH_MOVIES_FAILURE)
+    [types.GET_WATCHLIST_FAILURE]: (state, action) => {
+      console.log(types.GET_WATCHLIST_FAILURE)
       return {...state, loading: false, error: action.payload.error}
     }
   },

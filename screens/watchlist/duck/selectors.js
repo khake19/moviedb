@@ -1,14 +1,14 @@
-const getMoviesSelector = (state) => {
-  const movies = state.home.movies.results.reduce((accumulator, currentValue) => {
+const getWatchListSelector = (state) => {
+  const watchlists = state.home.watchlists.results.reduce((accumulator, watchlist) => {
       accumulator.push({
-        movieId: currentValue.id,
-        title: currentValue.original_title,
-        poster: currentValue.poster_path,
-        releaseDate: currentValue.release_date
+        movieId: watchlist.id,
+        title: watchlist.original_title,
+        poster: watchlist.poster_path,
+        releaseDate: watchlist.release_date
       })
       return accumulator;
   }, [])
-  return movies
+  return watchlists
 }
 
 export default { getMoviesSelector }

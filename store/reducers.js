@@ -1,10 +1,12 @@
 import auth from '../screens/login/duck';
 import home from '../screens/home/duck';
+import watchlist from '../screens/watchlist/duck';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
   auth,
-  home
+  home,
+  watchlist
 });
 
 
