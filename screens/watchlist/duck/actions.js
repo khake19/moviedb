@@ -1,19 +1,12 @@
-import { createAction } from 'redux-actions';
 import types from './types';
+import { createAction } from 'redux-actions';
 
-const getMovies = createAction(types.GET_MOVIES_STARTED);
-const getMoviesSuccess = createAction(types.GET_MOVIES_SUCCESS);
-const getMoviesFailure = createAction(types.GET_MOVIES_FAILURE);
+const getWatchList = createAction(types.GET_WATCHLIST_STARTED);
+const getWatchListSuccess = createAction(types.GET_WATCHLIST_SUCCESS);
+const getWatchListFailure = createAction(types.GET_WATCHLIST_FAILURE);
 
-
-const searchMovies = createAction(types.SEARCH_MOVIES_STARTED);
-const searchMoviesSuccess = createAction(types.SEARCH_MOVIES_SUCCESS);
-const searchMoviesFailure = createAction(types.SEARCH_MOVIES_FAILURE);
 export default {
-  getMovies,
-  getMoviesSuccess,
-  getMoviesFailure,
-  searchMovies,
-  searchMoviesSuccess,
-  searchMoviesFailure
+  getWatchList,
+  getWatchListSuccess,
+  getWatchListFailure
 }

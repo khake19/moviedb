@@ -8,7 +8,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   whiteList: ['auth'],
-  blackList: ['home']
+  blackList: ['home', 'watchlist']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers);

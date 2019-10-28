@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "fe413a93-4af1-46c2-8666-4bdf80043d6e",
+		"name": "The Movie DB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generate Request Token",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/authentication/token/new?api_key={{api_key}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authentication",
+						"token",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "krk",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "kerk",
+							"type": "text"
+						},
+						{
+							"key": "request_token",
+							"value": "{{request_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/authentication/token/validate_with_login?api_key={{api_key}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authentication",
+						"token",
+						"validate_with_login"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Session Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "request_token",
+							"value": "{{request_token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/authentication/session/new?api_key={{api_key}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"authentication",
+						"session",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/account?api_key={{api_key}}&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"account"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listing of Trending Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/trending/all/week?api_key={{api_key}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"trending",
+						"all",
+						"week"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/search/movie?api_key={{api_key}}&query=joker",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"search",
+						"movie"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "query",
+							"value": "joker"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/movie/{{movie_id}}?api_key={{api_key}}&language=en-US",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movie",
+						"{{movie_id}}"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Movie Reviews",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/movie/{{movie_id}}/reviews?api_key={{api_key}}&language=en-US&page=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movie",
+						"{{movie_id}}",
+						"reviews"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/account/{{account_id}}/rated/movies?api_key={{api_key}}&language=en-US&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"account",
+						"{{account_id}}",
+						"rated",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate a Movie",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "value",
+						"value": "8.5",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "value",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/movie/{{movie_id}}/rating?api_key={{api_key}}&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movie",
+						"{{movie_id}}",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Rating",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/movie/{{movie_id}}/rating?api_key={{api_key}}&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"movie",
+						"{{movie_id}}",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add to Watchlist",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "media_type",
+							"value": "movie",
+							"type": "text"
+						},
+						{
+							"key": "media_id",
+							"value": "{{movie_id}}",
+							"type": "text"
+						},
+						{
+							"key": "watchlist",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/account/{{account_id}}/watchlist?api_key={{api_key}}&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"account",
+						"{{account_id}}",
+						"watchlist"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listing of Movies in Watchlist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/account/{{account_id}}/watchlist/movies?api_key={{api_key}}&language=en-US&sort_by=created_at.asc&page=1&session_id={{session_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"account",
+						"{{account_id}}",
+						"watchlist",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "{{api_key}}"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "sort_by",
+							"value": "created_at.asc"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
