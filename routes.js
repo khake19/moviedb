@@ -8,7 +8,7 @@ import {
 } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from './screens/home/HomeScreen';
-import SettingsScreen from './screens/SettingsScreen';
+import WatchListScreen from './screens/watchlist/WatchListScreen';
 import SignInScreen from './screens/login/LoginScreen';
 
 
@@ -39,9 +39,9 @@ export const SignedIn = createBottomTabNavigator(
       }
     },
     Profile: {
-      screen: SettingsScreen,
+      screen: WatchListScreen,
       navigationOptions: {
-        tabBarLabel: "Profile",
+        tabBarLabel: "Watch List",
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="user" size={30} color={tintColor} />
         )
