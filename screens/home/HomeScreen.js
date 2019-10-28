@@ -1,79 +1,65 @@
 import * as WebBrowser from 'expo-web-browser';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Image,
   Platform,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
-  Button
+  View
 } from 'react-native';
 import container from './container';
 import { MonoText } from '../../components/StyledText';
 import { withAuth } from '../../hoc';
+import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body } from 'native-base';
+import { FlatGrid } from 'react-native-super-grid';
+import { SearchBar } from 'react-native-elements';
 
 const HomeScreen = (props) => {
 
-  const handleLogout = () => {
-    props.home.logout()
+  useEffect(() => {
+    props.home.getMovies()
+  }, [])
+
+  const [search, setSearch] = useState('')
+  const handleLogout = () => { props.home.logout() }
+
+  const handleSearch = (text) => {
+    props.home.searchMovies(text)
+    setSearch(text)
   }
+
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
-        <View style={styles.welcomeContainer}>
-          <Image
-            source={
-              __DEV__
-                ? require('../../assets/images/robot-dev.png')
-                : require('../../assets/images/robot-prod.png')
-            }
-            style={styles.welcomeImage}
-          />
-        </View>
-
-        <View style={styles.getStartedContainer}>
-          <DevelopmentModeNotice />
-
-          <Text style={styles.getStartedText}>Get started by opening</Text>
-
-          <View
-            style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-            <MonoText>screens/HomeScreen.js</MonoText>
-          </View>
-
-          <Text style={styles.getStartedText}>
-            Change this text and your app will automatically reload. So much fun
-          </Text>
-        </View>
-
-        <View style={styles.helpContainer}>
-          <TouchableOpacity onPress={handleHelpPress} style={styles.helpLink}>
-            <Text style={styles.helpLinkText}>
-              Help, it didn’t automatically reload!
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-
-      <View style={styles.tabBarInfoContainer}>
-        <Text style={styles.tabBarInfoText}>
-          This is a tab bar. You can edit it in:
-        </Text>
-        <Button
-        title="Logout"
-        onPress={handleLogout}
+        <SearchBar
+          placeholder="Type Here..."
+          onChangeText={handleSearch}
+          value={search}
+          lightTheme
         />
-        <View
-          style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-          <MonoText style={styles.codeHighlightText}>
-            navigation/MainTabNavigator.js
-          </MonoText>
-        </View>
-      </View>
+        <FlatGrid
+        itemDimension={130}
+        items={props.movies}
+        style={styles.gridView}
+        renderItem={({ item, index }) => (
+          <Content>
+            <Card style={{flex: 0}}>
+              <CardItem>
+                <Body>
+                  <Image source={{uri: 'https://image.tmdb.org/t/p/original' + item.poster}} style={{height: 200, alignSelf: 'stretch', flex: 1}}/>
+                  <Text style={styles.tabBarInfoText}>
+                    {item.title}
+                  </Text>
+                </Body>
+              </CardItem>
+            </Card>
+          </Content>
+        )}
+      />
+      </ScrollView>
     </View>
   );
 }
@@ -82,42 +68,27 @@ HomeScreen.navigationOptions = {
   header: null,
 };
 
-function DevelopmentModeNotice() {
-  if (__DEV__) {
-    const learnMoreButton = (
-      <Text onPress={handleLearnMorePress} style={styles.helpLinkText}>
-        Learn more
-      </Text>
-    );
-
-    return (
-      <Text style={styles.developmentModeText}>
-        Development mode is enabled: your app will be slower but you can use
-        useful development tools. {learnMoreButton}
-      </Text>
-    );
-  } else {
-    return (
-      <Text style={styles.developmentModeText}>
-        You are not in development mode: your app will run at full speed.
-      </Text>
-    );
-  }
-}
-
-function handleLearnMorePress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/development-mode/'
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/versions/latest/workflow/up-and-running/#cant-see-your-changes'
-  );
-}
-
 const styles = StyleSheet.create({
+  gridView: {
+    marginTop: 10,
+    flex: 1,
+  },
+  itemContainer: {
+    justifyContent: 'flex-end',
+    borderRadius: 5,
+    padding: 5,
+    height: 150,
+  },
+  itemName: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
+  },
+  itemCode: {
+    fontWeight: '600',
+    fontSize: 12,
+    color: '#fff',
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

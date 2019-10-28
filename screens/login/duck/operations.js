@@ -1,9 +1,9 @@
 import actions from './actions';
 
 const login = payload => async dispatch => {
-  dispatch(actions.loginStarted());
-
+  
   try {
+    dispatch(actions.loginStarted());
     const request_token = await fetch('https://api.themoviedb.org/3/authentication/token/new?api_key=f7f6f9484a1e7c9382424a4c95fb2946')
 
     //generate request token
