@@ -5,6 +5,9 @@
 - ~~Design Duck Architecture~~
 - ~~Add Login Page~~
 - ~~Completion of API through Postman~~
+- ~~Eject Expo~~
+  - Need to use native package like asyncStorage and expo doesnt support it
+  - expokit
 - Authentication
 - Navigation
 - Display Movie List
@@ -41,6 +44,9 @@ persist store:
 https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48b
 https://github.com/react-native-community/async-storage
 
+how to use hoc using hooks:
+https://codeburst.io/reduce-your-boilerplate-code-for-redux-container-using-react-hoc-8c76584ccf0e?gi=2f31be2d4db
+
 eject from expo to expokit:
 https://docs.expo.io/versions/latest/expokit/expokit/
 https://freakycoder.com/react-native-notes-1-eject-expo-with-expokit-fe1181a55f60
@@ -54,6 +60,7 @@ https://github.com/react-native-community/async-storage
 gitignore file:
 https://github.com/facebook/react-native/blob/master/.gitignore
 
+use this link to display poster path:
 https://image.tmdb.org/t/p/original/
 https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
 ##request token expired or invalid
@@ -117,7 +124,3 @@ https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
 - account id
 - username
 - avatar
-
-
-Investigate why redux reset store
-- remove all persist redux
