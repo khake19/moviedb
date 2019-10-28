@@ -1,10 +1,10 @@
 const getMoviesSelector = (state) => {
-  const movies = state.home.movies.results.reduce((accumulator, currentValue) => {
+  const movies = state.home.movies.results.reduce((accumulator, movie) => {
       accumulator.push({
-        movieId: currentValue.id,
-        title: currentValue.original_title,
-        poster: currentValue.poster_path,
-        releaseDate: currentValue.release_date
+        movieId: movie.id,
+        title: movie.original_title,
+        poster: movie.poster_path,
+        releaseDate: movie.release_date
       })
       return accumulator;
   }, [])
