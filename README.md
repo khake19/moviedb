@@ -1,11 +1,12 @@
 
-##Task
+## Task
 - ~~Set Up Environment~~
 - ~~Set Up Redux~~
 - ~~Design Duck Architecture~~
-- ~~Add Login Page~~
 - ~~Completion of API through Postman~~
 - ~~Eject Expo~~
+- ~~Hydrate/Persist redux store~~
+- ~~Add Login Page~~
 - ~~Authentication~~
 - ~~Navigation~~
 - ~~Display Movie List~~
@@ -17,10 +18,10 @@
 - Delete Rating
 - Add to Watchlist
 - ~~Listing of movies in watchlist~~
+- Improve overall design
 
 
-
-##Reminder:
+## Reminder:
   - Download X-code on Mac
 
 ## Need To Thinker: (still dabatable)
@@ -28,6 +29,8 @@
   - ducks files should be independent to screens component since we can use same ducks files to different screens component. ex (movies, movie details)
   - home ducks folder should be replace to movies.
 
+## Bugs
+  - Currently movie details wont add new set of data once reach the bottom.
 
 ## Planning
 
@@ -47,98 +50,22 @@
 ### Navigation
   - use hoc hooks to authenticate all screens
 
-Article:
+### Session object
+  - sesion id
+  - account id
+  - username
+  - fullname
 
-handling api:
-https://medium.com/better-programming/handling-api-like-a-boss-in-react-native-364abd92dc3d
+## Article:
 
-config environments:
-https://dev.to/calintamas/how-to-manage-staging-and-production-environments-in-a-react-native-app-4naa
+[api](https://medium.com/better-programming/handling-api-like-a-boss-in-react-native-364abd92dc3d) - Handle api
 
-persist store:
-https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48b
-https://github.com/react-native-community/async-storage
+[persist redux store](https://itnext.io/react-native-why-you-should-be-using-redux-persist-8ad1d68fa48b) - Use to authenticate via store
 
-how to use hoc using hooks:
-https://codeburst.io/reduce-your-boilerplate-code-for-redux-container-using-react-hoc-8c76584ccf0e?gi=2f31be2d4db
+[async storage](https://github.com/react-native-community/async-storage) - Need by persist redux for store
 
-eject from expo to expokit:
-https://docs.expo.io/versions/latest/expokit/expokit/
-https://freakycoder.com/react-native-notes-1-eject-expo-with-expokit-fe1181a55f60
+[hoc hooks](https://codeburst.io/reduce-your-boilerplate-code-for-redux-container-using-react-hoc-8c76584ccf0e?gi=2f31be2d4db) - Hooks to handle authentication
 
-how to run xcode project:
-https://www.dummies.com/web-design-development/mobile-apps/build-and-run-your-xcode-application/
+[expokit](https://docs.expo.io/versions/latest/expokit/expokit/) - Exit expo and use expokit
 
-install async-storage natively:
-https://github.com/react-native-community/async-storage
-
-gitignore file:
-https://github.com/facebook/react-native/blob/master/.gitignore
-
-use this link to display poster path:
-https://image.tmdb.org/t/p/original/
-https://www.themoviedb.org/talk/5aeaaf56c3a3682ddf0010de?language=en-US
-
-themoviedb api return value:
-##request token expired or invalid
-
-`{
-    "status_code": 33,
-    "status_message": "Invalid request token: The request token is either expired or invalid."
-}`
-
-##request token validated successfully
-`{
-    "success": true,
-    "expires_at": "2019-10-26 07:45:49 UTC",
-    "request_token": "5d472f0dda67589752285fe5c251a6a26a8c512a"
-}`
-
-##session denied response:
-
-`{
-    "failure": true,
-    "status_code": 17,
-    "status_message": "Session denied."
-}`
-
-##session success
-`{
-    "success": true,
-    "session_id": "df0d744c135fe156b9f4994ef128d8fd931549af"
-}`
-
-
-##get account successfully
-`{
-    "avatar": {
-        "gravatar": {
-            "hash": "ac6db47007d7d67eb86a8e53ebeb5517"
-        }
-    },
-    "id": 8763122,
-    "iso_639_1": "en",
-    "iso_3166_1": "US",
-    "name": "",
-    "include_adult": false,
-    "username": "krk"
-}`
-
-##get account wrong api key
-`{
-    "status_code": 7,
-    "status_message": "Invalid API key: You must be granted a valid key.",
-    "success": false
-}`
-
-##get account wrong session id
-`{
-    "status_code": 3,
-    "status_message": "Authentication failed: You do not have permissions to access the service."
-}`
-
-## need to add to localstorage
-- sesion id
-- account id
-- username
-- avatar
+[xcode run and build](https://www.dummies.com/web-design-development/mobile-apps/build-and-run-your-xcode-application/) - Run xcode in react native project
