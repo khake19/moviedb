@@ -20,7 +20,7 @@ const WatchListScreen = (props) => {
       contentContainerStyle={styles.contentContainer}>
       <View>
       {
-        watchlists.map((watchlist) => (
+        props.watchlists.map((watchlist) => (
           <ListItem
             key={watchlist.movieId}
             leftAvatar={{ source: { uri: 'https://image.tmdb.org/t/p/original' + watchlist.poster } } }
