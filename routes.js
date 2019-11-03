@@ -12,17 +12,11 @@ import WatchListScreen from './screens/watchlist/WatchListScreen';
 import SignInScreen from './screens/login/LoginScreen';
 
 
-const headerStyle = {
-  marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-};
-
-
 export const SignedOut = createStackNavigator({
   SignIn: {
     screen: SignInScreen,
     navigationOptions: {
-      title: "Sign In",
-      headerStyle
+      header: null
     }
   }
 });
@@ -45,13 +39,6 @@ export const SignedIn = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <FontAwesome name="user" size={30} color={tintColor} />
         )
-      }
-    }
-  },
-  {
-    tabBarOptions: {
-      style: {
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
       }
     }
   }
