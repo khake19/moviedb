@@ -9,7 +9,8 @@ import logo from '../../assets/images/logo.png';
 import {
   StyleSheet,
   View,
-  Image
+  Image,
+  KeyboardAvoidingView
 } from 'react-native';
 
 const LoginScreen = (props) => {
@@ -20,7 +21,7 @@ const LoginScreen = (props) => {
     props.auth.login({username, password})
   }
   return(
-    <View style={styles.container}>
+    <KeyboardAvoidingView style={styles.container} behavior="padding">
       <Image source={logo} style={styles.logo} />
       <View style={styles.form}>
       <FormTextInput
@@ -39,7 +40,7 @@ const LoginScreen = (props) => {
       onPress={handleSubmit}
       />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   )
 }
 
