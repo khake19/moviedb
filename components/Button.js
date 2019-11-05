@@ -4,9 +4,20 @@ import colors from '../config/colors';
 
 
 const Button = (props) => {
-  const { onPress, label } = props;
+  const { onPress, label, disabled } = props;
+  const containerStyle = [
+    styles.container,
+    disabled
+    ? styles.containerDisabled
+    : styles.containerEnabled
+  ]
+
   return(
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={containerStyle}
+      onPress={onPress}
+      disabled={disabled}
+    >
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   )
@@ -28,6 +39,12 @@ const styles = StyleSheet.create({
     color: colors.WHITE,
     textAlign: "center",
     height: 20
+  },
+  containerEnabled: {
+    opacity: 1
+  },
+  containerDisabled: {
+    opacity: 0.3
   }
 })
 
