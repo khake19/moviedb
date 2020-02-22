@@ -1,5 +1,5 @@
-
 ## Task
+
 - ~~Set Up Environment~~
 - ~~Set Up Redux~~
 - ~~Design Duck Architecture~~
@@ -20,41 +20,50 @@
 - ~~Listing of movies in watchlist~~
 - Improve overall design
 
+## How to Start Application:
 
 ## Reminder:
-  - Download X-code on Mac
+
+- Download X-code on Mac
 
 ## Need To Thinker: (still dabatable)
-  - move ducks files to /modules file with same level with screens folder
-  - ducks files should be independent to screens component since we can use same ducks files to different screens component. ex (movies, movie details)
-  - home ducks folder should be replace to movies.
+
+- move ducks files to /modules file with same level with screens folder
+- ducks files should be independent to screens component since we can use same ducks files to different screens component. ex (movies, movie details)
+- home ducks folder should be replace to movies.
 
 ## Bugs
-  - Currently movie details wont add new set of data once reach the bottom.
+
+- Currently movie details wont add new set of data once reach the bottom.
 
 ## Planning
 
 ### Redux Structure
-  - Read more article on how ducks architecture works
+
+- Read more article on how ducks architecture works
 
 ### Redux Persist
-  - Used this to store our sessions
-  - Identify reducers on what to whitelist or blacklist
 
-### Authentication  
-  - aquire api key in themoviedb website
-  - use api key to request for request key
-  - login using username and password to validate our request key
-  - using validated key, now we can request session id to be used as authorisation
+- Used this to store our sessions
+- Identify reducers on what to whitelist or blacklist
+
+### Authentication
+
+- aquire api key in themoviedb website
+- use api key to request for request key
+- login using username and password to validate our request key
+- using validated key, now we can request session id to be used as authorisation
 
 ### Navigation
-  - use hoc hooks to authenticate all screens
+
+- use hoc hooks to authenticate all screens
 
 ### Session object
-  - sesion id
-  - account id
-  - username
-  - fullname
+
+- sesion id
+- account id
+- username
+- fullname
 
 ## Article:
 
