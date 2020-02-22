@@ -1,14 +1,3 @@
-node_modules/**/*
-.expo/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-web-report/
 
 # Xcode
 !**/*.xcodeproj
@@ -16,6 +5,26 @@ web-report/
 !**/*.xcworkspacedata
 !**/*.xcsettings
 !**/*.xcscheme
+*.pbxuser
+
+
+# Watchman
+.watchmanconfig
+
+# Android
+.idea
+.gradle
+local.properties
+*.iml
+
+# OSX
+#
+.DS_Store
+ios/.DS_Store
+
+# Xcode
+#
+build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -33,71 +42,34 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-# Gradle
-/build/
-/RNTester/android/app/build/
-/RNTester/android/app/gradle/
-/RNTester/android/app/gradlew
-/RNTester/android/app/gradlew.bat
-/ReactAndroid/build/
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn-error.log
 
-# Buck
-.buckd
-buck-out
-/ReactAndroid/src/main/jni/prebuilt/lib/armeabi-v7a/
-/ReactAndroid/src/main/jni/prebuilt/lib/x86/
-/ReactAndroid/src/main/gen
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
 
-# Watchman
-.watchmanconfig
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://docs.fastlane.tools/best-practices/source-control/
 
-# Android
-.idea
-.gradle
-local.properties
-*.iml
-/android/
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
 
-# Node
-node_modules
-*.log
-.nvm
-/bots/node_modules/
-package-lock.json
-
-# OS X
-.DS_Store
-
-# Test generated files
-/ReactAndroid/src/androidTest/assets/AndroidTestBundle.js
-*.js.meta
-
-/coverage
-/third-party
-
-# Root dir shouldn't have Xcode project
-/*.xcodeproj
-
-# ReactCommon subdir shouldn't have Xcode project
-/ReactCommon/**/*.xcodeproj
-RNTester/build
-
-# Libs that shouldn't have Xcode project
-/Libraries/FBLazyVector/**/*.xcodeproj
-/Libraries/FBReactNativeSpec/**/*.xcodeproj
-/Libraries/RCTRequired/**/*.xcodeproj
-/React/CoreModules/**/*.xcodeproj
-/packages/react-native-codegen/**/*.xcodeproj
+# Bundle artifact
+*.jsbundle
 
 # CocoaPods
-/template/ios/Pods/
-/template/ios/Podfile.lock
-/RNTester/Gemfile.lock
+/ios/Pods/
+VoxImplantDemo.xcworkspace
+VoximplantDemo.xcworkspace
 
-# Ignore RNTester specific Pods, but keep the __offline_mirrors__ here.
-RNTester/Pods/*
-!RNTester/Pods/__offline_mirrors
-
-# react-native-codegen
-/ReactCommon/fabric/components/rncore/
-/schema-rncore.json
+android/app/google-services.json
