@@ -20,7 +20,24 @@
 - ~~Listing of movies in watchlist~~
 - Improve overall design
 
-## How to Start Application:
+## How to Start Application in ios:
+
+> This will build your code.Do this only if you have package added
+> Add a build folder in ios. it means its ready to execute xcode
+
+- yarn install
+- cd ios/ && pod install
+- yarn ios
+
+> https://docs.expo.io/versions/v36.0.0/workflow/ios-simulator/
+> Make sure you have the latest Xcode.
+> If you don't have it already, install CocoaPods, which is a native dependency manager for iOS.
+> Run pod install from your project's ios directory.
+> Open your project's xcworkspace file in Xcode.
+> Use Xcode to build, install and run the project on your test device or simulator. (this will happen by default if you click the big "Play" button in Xcode.)
+> Once it's running, the iOS app should automatically request your JS bundle from the project you're serving from Expo CLI.
+
+> https://github.com/jhen0409/react-native-debugger
 
 ## Reminder:
 
