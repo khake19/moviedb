@@ -34,6 +34,8 @@ PODS:
   - glog (0.3.5)
   - React (0.59.10):
     - React/Core (= 0.59.10)
+  - react-native-config (0.12.0):
+    - React
   - React/Core (0.59.10):
     - yoga (= 0.59.10.React)
   - React/CxxBridge (0.59.10):
@@ -126,6 +128,7 @@ DEPENDENCIES:
   - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-config (from `../node_modules/react-native-config`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
@@ -201,6 +204,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-config:
+    :path: "../node_modules/react-native-config"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
@@ -264,6 +269,7 @@ SPEC CHECKSUMS:
   Folly: de497beb10f102453a1afa9edbf8cf8a251890de
   glog: aefd1eb5dda2ab95ba0938556f34b98e2da3a60d
   React: 36d0768f9e93be2473b37e7fa64f92c1d5341eef
+  react-native-config: f2c2ae45625a068c35681a16b9bfb1ca58b0adc7
   RNCAsyncStorage: 5d83b49070d41fd72906a116c5e7bdac4ea3a814
   RNGestureHandler: 5329a942fce3d41c68b84c2c2276ce06a696d8b0
   RNReanimated: 5d148a7f55ebf47055ea55f51f5dc7a827dc9547
@@ -282,6 +288,6 @@ SPEC CHECKSUMS:
   UMTaskManagerInterface: 1e70fe58b872355f0ecb44fb81bb1a16484047f0
   yoga: 684513b14b03201579ba3cee20218c9d1298b0cc
 
-PODFILE CHECKSUM: 0c14e19b27b1728f426b3e23dc4147e82d498c96
+PODFILE CHECKSUM: 3ea7785863a1ba3cb533a1bbec040baf4b609905
 
 COCOAPODS: 1.8.4
