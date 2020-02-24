@@ -26,6 +26,7 @@ import {
 } from 'native-base';
 import {FlatGrid} from 'react-native-super-grid';
 import {SearchBar} from 'react-native-elements';
+import Config from 'react-native-config';
 
 const HomeScreen = props => {
   const [movies, setMovies] = useState(props.popularMovies);
@@ -67,8 +68,7 @@ const HomeScreen = props => {
                   <Body>
                     <Image
                       source={{
-                        uri:
-                          'https://image.tmdb.org/t/p/original' + item.poster,
+                        uri: Config.IMAGE_URI + item.poster,
                       }}
                       style={{height: 200, alignSelf: 'stretch', flex: 1}}
                     />
