@@ -3,10 +3,6 @@ import Config from 'react-native-config';
 
 const getTrendingMovies = options => async dispatch => {
   try {
-    //need an environment to add settings
-    const url = 'https://api.themoviedb.org/3';
-    const apiKey = 'f7f6f9484a1e7c9382424a4c95fb2946';
-
     dispatch(actions.getTrendingMovies(options));
     const request_movies = await fetch(
       Config.URL + '/trending/all/week?api_key=' + Config.API_KEY,
@@ -17,6 +13,24 @@ const getTrendingMovies = options => async dispatch => {
     dispatch(actions.getTrendingMoviesSuccess(movies));
   } catch (error) {
     dispatch(actions.getTrendingMoviesFailure({error: error}));
+  }
+};
+const getPopularMovies = options => async dispatch => {
+  try {
+    dispatch(actions.getPopularMovies(options));
+    const request_movies = await fetch(
+      Config.URL +
+        '/movie/popular?api_key=' +
+        Config.API_KEY +
+        '&language=en-US' +
+        '&page=1',
+    );
+
+    const movies = await request_movies.json();
+    if ('status_code' in movies) throw movies.status_message;
+    dispatch(actions.getPopularMoviesSuccess(movies));
+  } catch (error) {
+    dispatch(actions.getPopularMoviesFailure({error: error}));
   }
 };
 
@@ -37,5 +51,6 @@ const searchMovies = text => async dispatch => {
 };
 export default {
   getTrendingMovies,
+  getPopularMovies,
   searchMovies,
 };

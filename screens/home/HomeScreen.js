@@ -28,11 +28,11 @@ import {FlatGrid} from 'react-native-super-grid';
 import {SearchBar} from 'react-native-elements';
 
 const HomeScreen = props => {
-  const [movies, setMovies] = useState(props.movies);
+  const [movies, setMovies] = useState(props.popularMovies);
 
   useEffect(() => {
-    props.home.getTrendingMovies();
-    setMovies(props.movies);
+    props.home.getPopularMovies();
+    setMovies(props.popularMovies);
   }, movies);
 
   const [search, setSearch] = useState('');
@@ -58,7 +58,7 @@ const HomeScreen = props => {
         />
         <FlatGrid
           itemDimension={130}
-          items={props.movies}
+          items={props.popularMovies}
           style={styles.gridView}
           renderItem={({item, index}) => (
             <Content>
