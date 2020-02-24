@@ -31,7 +31,7 @@ const HomeScreen = props => {
   const [movies, setMovies] = useState(props.movies);
 
   useEffect(() => {
-    props.home.getMovies();
+    props.home.getTrendingMovies();
     setMovies(props.movies);
   }, movies);
 
