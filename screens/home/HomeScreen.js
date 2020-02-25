@@ -53,14 +53,13 @@ const footer = (
 );
 
 const HomeScreen = props => {
-  const [movies, setMovies] = useState(props.popularMovies);
+  const [search, setSearch] = useState('');
+  const [page, setPage] = useState(props.page);
 
   useEffect(() => {
-    props.home.getPopularMovies();
-    setMovies(props.popularMovies);
-  }, movies);
+    props.home.getPopularMovies({page});
+  }, [page]);
 
-  const [search, setSearch] = useState('');
   const handleLogout = () => {
     props.home.logout();
   };
@@ -68,6 +67,11 @@ const HomeScreen = props => {
   const handleSearch = text => {
     props.home.searchMovies(text);
     setSearch(text);
+  };
+
+  // dont get new set  movies if there are ongoing request to get the movies
+  const handleLoadMore = () => {
+    if (page == props.page && !props.loading) setPage(page + 1);
   };
 
   return (
@@ -89,7 +93,7 @@ const HomeScreen = props => {
           keyExtractor={(item, index) => index.toString()}
           ListFooterComponent={footer}
           onEndReachedThreshold={0.4}
-          onEndReached={() => console.log('call another api')}
+          onEndReached={handleLoadMore}
         />
       </ScrollView>
     </View>

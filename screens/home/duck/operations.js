@@ -15,7 +15,7 @@ const getTrendingMovies = options => async dispatch => {
     dispatch(actions.getTrendingMoviesFailure({error: error}));
   }
 };
-const getPopularMovies = options => async dispatch => {
+const getPopularMovies = (options = {page: 1}) => async dispatch => {
   try {
     dispatch(actions.getPopularMovies(options));
     const request_movies = await fetch(
@@ -23,7 +23,8 @@ const getPopularMovies = options => async dispatch => {
         '/movie/popular?api_key=' +
         Config.API_KEY +
         '&language=en-US' +
-        '&page=1',
+        '&page=' +
+        options.page,
     );
 
     const movies = await request_movies.json();

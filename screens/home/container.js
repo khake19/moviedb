@@ -11,6 +11,7 @@ const mapStateToProps = state => ({
   session: state.auth.session,
   trendingMovies: getTrendingMoviesSelector(state),
   popularMovies: getPopularMoviesSelector(state),
+  page: state.home.page,
   loading: state.home.loading,
   error: state.home.error,
 });

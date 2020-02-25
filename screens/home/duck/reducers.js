@@ -6,6 +6,7 @@ const initialState = {
   movies: {
     results: [],
   },
+  page: 1,
   loading: false,
   error: null,
 };
@@ -25,7 +26,25 @@ export default handleActions(
       return {...state, loading: true, error: null};
     },
     [types.GET_POPULAR_MOVIES_SUCCESS]: (state, action) => {
-      return {...state, movies: action.payload, error: null, loading: false};
+      const {payload} = action;
+      const {movies} = state;
+
+      let results = [];
+
+      // we make sure that refreshing app would not add the same list of movies
+      //TODO:: this should be in our test coverage
+      if (payload.page == 1) results = payload.results;
+      else if (payload.page <= state.page) results = movies.results;
+      else if (payload.page > state.page)
+        results = [...movies.results, ...payload.results];
+
+      return {
+        ...state,
+        movies: {results},
+        page: payload.page,
+        loading: false,
+        error: null,
+      };
     },
     [types.GET_POPULAR_MOVIES_FAILURE]: (state, action) => {
       return {...state, loading: false, error: action.payload.error};
