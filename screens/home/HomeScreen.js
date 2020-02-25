@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser';
 import React, {useEffect, useState} from 'react';
 import {
+  ActivityIndicator,
   Image,
   Platform,
   ScrollView,
@@ -27,6 +28,29 @@ import {
 import {FlatGrid} from 'react-native-super-grid';
 import {SearchBar} from 'react-native-elements';
 import Config from 'react-native-config';
+
+const renderItem = ({item, index}) => (
+  <Content>
+    <Card style={{flex: 0}}>
+      <CardItem>
+        <Body>
+          <Image
+            source={{
+              uri: Config.IMAGE_URI + item.poster,
+            }}
+            style={{height: 200, alignSelf: 'stretch', flex: 1}}
+          />
+          <Text style={styles.tabBarInfoText}>{item.title}</Text>
+        </Body>
+      </CardItem>
+    </Card>
+  </Content>
+);
+const footer = (
+  <View>
+    <ActivityIndicator size="large" />
+  </View>
+);
 
 const HomeScreen = props => {
   const [movies, setMovies] = useState(props.popularMovies);
@@ -61,23 +85,11 @@ const HomeScreen = props => {
           itemDimension={130}
           items={props.popularMovies}
           style={styles.gridView}
-          renderItem={({item, index}) => (
-            <Content>
-              <Card style={{flex: 0}}>
-                <CardItem>
-                  <Body>
-                    <Image
-                      source={{
-                        uri: Config.IMAGE_URI + item.poster,
-                      }}
-                      style={{height: 200, alignSelf: 'stretch', flex: 1}}
-                    />
-                    <Text style={styles.tabBarInfoText}>{item.title}</Text>
-                  </Body>
-                </CardItem>
-              </Card>
-            </Content>
-          )}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          ListFooterComponent={footer}
+          onEndReachedThreshold={0.4}
+          onEndReached={() => console.log('call another api')}
         />
       </ScrollView>
     </View>
@@ -93,107 +105,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flex: 1,
   },
-  itemContainer: {
-    justifyContent: 'flex-end',
-    borderRadius: 5,
-    padding: 5,
-    height: 150,
-  },
-  itemName: {
-    fontSize: 16,
-    color: '#fff',
-    fontWeight: '600',
-  },
-  itemCode: {
-    fontWeight: '600',
-    fontSize: 12,
-    color: '#fff',
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center',
-  },
   contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: {width: 0, height: -3},
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
+    flex: 1,
   },
   tabBarInfoText: {
     fontSize: 17,
     color: 'rgba(96,100,109, 1)',
     textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7',
   },
 });
 
