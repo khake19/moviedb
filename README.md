@@ -39,6 +39,13 @@
 
 > https://github.com/jhen0409/react-native-debugger
 
+## Config
+
+> this is already set in package json. just make sure to change it environement if needed
+> put all environement here
+
+- ENVFILE=.env.staging react-native run-ios
+
 ## Reminder:
 
 - Download X-code on Mac
@@ -95,3 +102,6 @@
 [expokit](https://docs.expo.io/versions/latest/expokit/expokit/) - Exit expo and use expokit
 
 [xcode run and build](https://www.dummies.com/web-design-development/mobile-apps/build-and-run-your-xcode-application/) - Run xcode in react native project
+
+> tutorial on how to infinite scroll in react
+> https://medium.com/react-native-development/how-to-use-the-flatlist-component-react-native-basics-92c482816fe6 > https://www.youtube.com/channel/UCEv1DI7Iftd2sWE8gcGG9rg/videos

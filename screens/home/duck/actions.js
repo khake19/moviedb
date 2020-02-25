@@ -1,19 +1,29 @@
-import { createAction } from 'redux-actions';
+import {createAction} from 'redux-actions';
 import types from './types';
 
-const getMovies = createAction(types.GET_MOVIES_STARTED);
-const getMoviesSuccess = createAction(types.GET_MOVIES_SUCCESS);
-const getMoviesFailure = createAction(types.GET_MOVIES_FAILURE);
-
+const getTrendingMovies = createAction(types.GET_TRENDING_MOVIES_STARTED);
+const getTrendingMoviesSuccess = createAction(
+  types.GET_TRENDING_MOVIES_SUCCESS,
+);
+const getTrendingMoviesFailure = createAction(
+  types.GET_TRENDING_MOVIES_FAILURE,
+);
+const getPopularMovies = createAction(types.GET_POPULAR_MOVIES_STARTED);
+const getPopularMoviesSuccess = createAction(types.GET_POPULAR_MOVIES_SUCCESS);
+const getPopularMoviesFailure = createAction(types.GET_POPULAR_MOVIES_FAILURE);
 
 const searchMovies = createAction(types.SEARCH_MOVIES_STARTED);
 const searchMoviesSuccess = createAction(types.SEARCH_MOVIES_SUCCESS);
 const searchMoviesFailure = createAction(types.SEARCH_MOVIES_FAILURE);
+
 export default {
-  getMovies,
-  getMoviesSuccess,
-  getMoviesFailure,
+  getTrendingMovies,
+  getTrendingMoviesSuccess,
+  getTrendingMoviesFailure,
+  getPopularMovies,
+  getPopularMoviesSuccess,
+  getPopularMoviesFailure,
   searchMovies,
   searchMoviesSuccess,
-  searchMoviesFailure
-}
+  searchMoviesFailure,
+};

@@ -1,23 +1,28 @@
-import { connect } from 'react-redux';
-import { homeOperations, homeSelectors } from './duck';
-import { authOperations } from '../login/duck';
-import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import {homeOperations, homeSelectors} from './duck';
+import {authOperations} from '../login/duck';
+import {bindActionCreators} from 'redux';
 
-const { getMovies, searchMovies } = homeOperations;
-const { logout } = authOperations;
-const { getMoviesSelector } = homeSelectors;
+const {getTrendingMovies, getPopularMovies, searchMovies} = homeOperations;
+const {logout} = authOperations;
+const {getTrendingMoviesSelector, getPopularMoviesSelector} = homeSelectors;
 
 const mapStateToProps = state => ({
   session: state.auth.session,
-  movies: getMoviesSelector(state),
+  trendingMovies: getTrendingMoviesSelector(state),
+  popularMovies: getPopularMoviesSelector(state),
+  page: state.home.page,
   loading: state.home.loading,
-  error: state.home.error
+  error: state.home.error,
 });
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    home: bindActionCreators({ getMovies, searchMovies, logout }, dispatch)
-  }
+    home: bindActionCreators(
+      {getTrendingMovies, getPopularMovies, searchMovies, logout},
+      dispatch,
+    ),
+  };
 };
 
-export default connect(mapStateToProps,  mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps);
