@@ -9,6 +9,7 @@ const initialState = {
   page: 1,
   loading: false,
   error: null,
+  refreshing: false,
 };
 
 export default handleActions(
@@ -48,6 +49,25 @@ export default handleActions(
     },
     [types.GET_POPULAR_MOVIES_FAILURE]: (state, action) => {
       return {...state, loading: false, error: action.payload.error};
+    },
+    [types.GET_REFRESH_MOVIES_STARTED]: state => {
+      return {...state, error: null, refreshing: true};
+    },
+    [types.GET_REFRESH_MOVIES_SUCCESS]: (state, action) => {
+      return {
+        ...state,
+        movies: {results: action.payload.results},
+        error: null,
+        page: action.payload.page,
+        refreshing: false,
+      };
+    },
+    [types.GET_REFRESH_MOVIES_FAILURE]: (state, action) => {
+      return {
+        ...state,
+        error: action.payload.error,
+        refreshing: false,
+      };
     },
     [types.SEARCH_MOVIES_STARTED]: state => {
       return {...state, loading: true, error: null};

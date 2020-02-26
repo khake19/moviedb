@@ -3,7 +3,12 @@ import {homeOperations, homeSelectors} from './duck';
 import {authOperations} from '../login/duck';
 import {bindActionCreators} from 'redux';
 
-const {getTrendingMovies, getPopularMovies, searchMovies} = homeOperations;
+const {
+  getTrendingMovies,
+  getPopularMovies,
+  getRefreshMovies,
+  searchMovies,
+} = homeOperations;
 const {logout} = authOperations;
 const {getTrendingMoviesSelector, getPopularMoviesSelector} = homeSelectors;
 
@@ -19,7 +24,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
   return {
     home: bindActionCreators(
-      {getTrendingMovies, getPopularMovies, searchMovies, logout},
+      {
+        getTrendingMovies,
+        getPopularMovies,
+        getRefreshMovies,
+        searchMovies,
+        logout,
+      },
       dispatch,
     ),
   };

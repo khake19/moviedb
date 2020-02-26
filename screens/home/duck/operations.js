@@ -35,6 +35,27 @@ const getPopularMovies = (options = {page: 1}) => async dispatch => {
   }
 };
 
+// This will restart the movie list
+const getRefreshMovies = (options = {page: 1}) => async dispatch => {
+  try {
+    dispatch(actions.getRefreshMovies(options));
+    const request_movies = await fetch(
+      Config.URL +
+        '/movie/popular?api_key=' +
+        Config.API_KEY +
+        '&language=en-US' +
+        '&page=' +
+        options.page,
+    );
+
+    const movies = await request_movies.json();
+    if ('status_code' in movies) throw movies.status_message;
+    dispatch(actions.getRefreshMoviesSuccess(movies));
+  } catch (error) {
+    dispatch(actions.getRefreshMoviesFailure({error: error}));
+  }
+};
+
 const searchMovies = text => async dispatch => {
   try {
     dispatch(actions.searchMovies());
@@ -53,5 +74,6 @@ const searchMovies = text => async dispatch => {
 export default {
   getTrendingMovies,
   getPopularMovies,
+  getRefreshMovies,
   searchMovies,
 };

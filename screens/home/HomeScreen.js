@@ -74,6 +74,10 @@ const HomeScreen = props => {
     if (page == props.page && !props.loading) setPage(page + 1);
   };
 
+  const handleRefresh = () => {
+    props.getRefreshMovies();
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -94,6 +98,8 @@ const HomeScreen = props => {
           ListFooterComponent={footer}
           onEndReachedThreshold={0.4}
           onEndReached={handleLoadMore}
+          refreshing={props.refreshing}
+          onRefresh={handleRefresh}
         />
       </ScrollView>
     </View>
