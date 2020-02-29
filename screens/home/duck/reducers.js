@@ -32,6 +32,7 @@ export default handleActions(
 
       let results = [];
 
+      // refreshing our app will not empty our store sense we persist data
       // we make sure that refreshing app would not add the same list of movies
       //TODO:: this should be in our test coverage
       if (payload.page == 1) results = payload.results;
@@ -51,7 +52,7 @@ export default handleActions(
       return {...state, loading: false, error: action.payload.error};
     },
     [types.GET_REFRESH_MOVIES_STARTED]: state => {
-      return {...state, error: null, refreshing: true};
+      return {...state, error: null, refreshing: true, loading: false};
     },
     [types.GET_REFRESH_MOVIES_SUCCESS]: (state, action) => {
       return {
@@ -60,6 +61,7 @@ export default handleActions(
         error: null,
         page: action.payload.page,
         refreshing: false,
+        loading: false,
       };
     },
     [types.GET_REFRESH_MOVIES_FAILURE]: (state, action) => {

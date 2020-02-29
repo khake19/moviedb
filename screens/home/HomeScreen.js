@@ -54,11 +54,17 @@ const footer = (
 
 const HomeScreen = props => {
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(props.page);
 
+  const [page, setPage] = useState(props.page);
   useEffect(() => {
-    props.home.getPopularMovies({page});
+    if (!refreshing) props.home.getPopularMovies({page});
   }, [page]);
+
+  const [refreshing, setRefreshing] = useState(props.refreshing);
+  useEffect(() => {
+    if (refreshing) props.home.getRefreshMovies();
+    setRefreshing(false);
+  }, [refreshing]);
 
   const handleLogout = () => {
     props.home.logout();
@@ -75,7 +81,8 @@ const HomeScreen = props => {
   };
 
   const handleRefresh = () => {
-    props.getRefreshMovies();
+    setRefreshing(true);
+    setPage(1);
   };
 
   return (
@@ -91,7 +98,7 @@ const HomeScreen = props => {
         />
         <FlatGrid
           itemDimension={130}
-          items={props.popularMovies}
+          items={props.movies}
           style={styles.gridView}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
