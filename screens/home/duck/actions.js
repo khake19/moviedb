@@ -12,6 +12,10 @@ const getPopularMovies = createAction(types.GET_POPULAR_MOVIES_STARTED);
 const getPopularMoviesSuccess = createAction(types.GET_POPULAR_MOVIES_SUCCESS);
 const getPopularMoviesFailure = createAction(types.GET_POPULAR_MOVIES_FAILURE);
 
+const getRefreshMovies = createAction(types.GET_REFRESH_MOVIES_STARTED);
+const getRefreshMoviesSuccess = createAction(types.GET_REFRESH_MOVIES_SUCCESS);
+const getRefreshMoviesFailure = createAction(types.GET_REFRESH_MOVIES_FAILURE);
+
 const searchMovies = createAction(types.SEARCH_MOVIES_STARTED);
 const searchMoviesSuccess = createAction(types.SEARCH_MOVIES_SUCCESS);
 const searchMoviesFailure = createAction(types.SEARCH_MOVIES_FAILURE);
@@ -23,6 +27,9 @@ export default {
   getPopularMovies,
   getPopularMoviesSuccess,
   getPopularMoviesFailure,
+  getRefreshMovies,
+  getRefreshMoviesSuccess,
+  getRefreshMoviesFailure,
   searchMovies,
   searchMoviesSuccess,
   searchMoviesFailure,

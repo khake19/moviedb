@@ -54,11 +54,17 @@ const footer = (
 
 const HomeScreen = props => {
   const [search, setSearch] = useState('');
-  const [page, setPage] = useState(props.page);
 
+  const [page, setPage] = useState(props.page);
   useEffect(() => {
-    props.home.getPopularMovies({page});
+    if (!refreshing) props.home.getPopularMovies({page});
   }, [page]);
+
+  const [refreshing, setRefreshing] = useState(props.refreshing);
+  useEffect(() => {
+    if (refreshing) props.home.getRefreshMovies();
+    setRefreshing(false);
+  }, [refreshing]);
 
   const handleLogout = () => {
     props.home.logout();
@@ -74,6 +80,11 @@ const HomeScreen = props => {
     if (page == props.page && !props.loading) setPage(page + 1);
   };
 
+  const handleRefresh = () => {
+    setRefreshing(true);
+    setPage(1);
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -87,13 +98,15 @@ const HomeScreen = props => {
         />
         <FlatGrid
           itemDimension={130}
-          items={props.popularMovies}
+          items={props.movies}
           style={styles.gridView}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           ListFooterComponent={footer}
           onEndReachedThreshold={0.4}
           onEndReached={handleLoadMore}
+          refreshing={props.refreshing}
+          onRefresh={handleRefresh}
         />
       </ScrollView>
     </View>
