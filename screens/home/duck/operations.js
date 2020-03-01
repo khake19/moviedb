@@ -56,11 +56,17 @@ const getRefreshMovies = (options = {page: 1}) => async dispatch => {
   }
 };
 
-const searchMovies = text => async dispatch => {
+const searchMovies = (options = {text: '', page: 1}) => async dispatch => {
   try {
     dispatch(actions.searchMovies());
     const search_movies = await fetch(
-      Config.URL + '/search/movie?api_key=' + Config.API_KEY + '&query=' + text,
+      Config.URL +
+        '/search/movie?api_key=' +
+        Config.API_KEY +
+        '&query=' +
+        options.text +
+        '&page=' +
+        options.page,
     );
 
     const movies = await search_movies.json();

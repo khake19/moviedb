@@ -53,25 +53,31 @@ const footer = (
 );
 
 const HomeScreen = props => {
-  const [search, setSearch] = useState('');
-
   const [page, setPage] = useState(props.page);
   useEffect(() => {
-    if (!refreshing) props.home.getPopularMovies({page});
+    if (!refreshing && !search) props.home.getPopularMovies({page});
+    if (search) props.home.searchMovies({text: search, page});
   }, [page]);
 
   const [refreshing, setRefreshing] = useState(props.refreshing);
   useEffect(() => {
     if (refreshing) props.home.getRefreshMovies();
     setRefreshing(false);
+    setSearch('');
   }, [refreshing]);
+
+  const [search, setSearch] = useState('');
+  useEffect(() => {
+    setPage(1);
+    if (search) props.home.searchMovies({text: search, page: 1});
+    else props.home.getPopularMovies({page: 1});
+  }, [search]);
 
   const handleLogout = () => {
     props.home.logout();
   };
 
   const handleSearch = text => {
-    props.home.searchMovies(text);
     setSearch(text);
   };
 
