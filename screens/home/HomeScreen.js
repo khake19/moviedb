@@ -28,6 +28,8 @@ import {
 import {FlatGrid} from 'react-native-super-grid';
 import {SearchBar} from 'react-native-elements';
 import Config from 'react-native-config';
+import {BehaviorSubject} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map, tap} from 'rxjs/operators';
 
 const renderItem = ({item, index}) => (
   <Content>
@@ -52,8 +54,25 @@ const footer = (
   </View>
 );
 
+let searchSubject$ = new BehaviorSubject('');
+let searchResult$ = searchSubject$.pipe(
+  debounceTime(700),
+  distinctUntilChanged(),
+);
+
 const HomeScreen = props => {
   const [page, setPage] = useState(props.page);
+
+  const [search, setSearch] = useState('');
+  useEffect(() => {
+    let subscriptions = searchResult$.subscribe(val => {
+      setPage(1);
+      if (val) props.home.searchMovies({text: val, page: 1});
+      else props.home.getPopularMovies({page: 1});
+    });
+    return () => subscriptions.unsubscribe();
+  }, [search]);
+
   useEffect(() => {
     if (!refreshing && !search) props.home.getPopularMovies({page});
     if (search) props.home.searchMovies({text: search, page});
@@ -66,19 +85,13 @@ const HomeScreen = props => {
     setSearch('');
   }, [refreshing]);
 
-  const [search, setSearch] = useState('');
-  useEffect(() => {
-    setPage(1);
-    if (search) props.home.searchMovies({text: search, page: 1});
-    else props.home.getPopularMovies({page: 1});
-  }, [search]);
-
   const handleLogout = () => {
     props.home.logout();
   };
 
   const handleSearch = text => {
     setSearch(text);
+    searchResult$.next(text);
   };
 
   // dont get new set  movies if there are ongoing request to get the movies
